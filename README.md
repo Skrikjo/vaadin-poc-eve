@@ -1,9 +1,14 @@
-# Project Base for Vaadin Flow and Spring Boot
+# Proof of Concept for EVE
 
-This project can be used as a starting point to create your own Vaadin Flow application with Spring Boot.
-It contains all the necessary configuration and some placeholder files to get you started.
-
-The best way to use it by via [vaadin.com/start](https://vaadin.com/start) - you can get only the necessary parts and choose the package naming you want to use.
+This project contains examples of usage of:
+ * TreeGrid with icons 
+ * TreeGrid with drag and drop 
+ * Tabs
+ * Charts
+ * Custom components(Java only component  and polymer based component)
+ * Examples of menu with sub menu
+ * Dynamic generation of menu
+ * Examples of usage of two windows side by side.
 
 Import the project to the IDE of your choosing as a Maven project. 
 
