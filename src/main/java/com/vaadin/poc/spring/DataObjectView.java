@@ -23,7 +23,6 @@ import javax.annotation.PostConstruct;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Route
 @Tag("data-object-view")
 @HtmlImport("frontend://src/data-object-view.html")
 @HtmlImport("styles/shared-styles.html")
