@@ -1,17 +1,19 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/vaadin-ordered-layout/src/vaadin-vertical-layout.html">
-<link rel="import" href="../bower_components/vaadin-ordered-layout/src/vaadin-horizontal-layout.html">
-<link rel="import" href="../bower_components/vaadin-button/src/vaadin-button.html">
-<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
-<link rel="import" href="../bower_components/vaadin-icons/vaadin-icons.html">
-<link rel="import" href="../bower_components/vaadin-select/src/vaadin-select.html">
-<link rel="import" href="../bower_components/vaadin-text-field/src/vaadin-text-field.html">
-<link rel="import" href="../bower_components/vaadin-tabs/src/vaadin-tabs.html">
-<link rel="import" href="../bower_components/vaadin-tabs/src/vaadin-tab.html">
+import {PolymerElement, html} from '@polymer/polymer/polymer-element.js';
 
-<dom-module id="data-object-view">
-    <template>
-        <style include="shared-styles">
+import "@vaadin/vaadin-ordered-layout/vaadin-vertical-layout.js";
+import "@vaadin/vaadin-ordered-layout/vaadin-horizontal-layout.js";
+import "@vaadin/vaadin-button/vaadin-button.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@vaadin/vaadin-icons/vaadin-icons.js";
+import "@vaadin/vaadin-select/vaadin-select.js";
+import "@vaadin/vaadin-text-field/vaadin-text-field.js";
+import "@vaadin/vaadin-tabs/vaadin-tabs.js";
+import "@vaadin/vaadin-tabs/vaadin-tab.js";
+
+class DataObjectView extends PolymerElement {
+    static get template() {
+        return html`
+          <style include="shared-styles">
             :host {
                 width: 100%;
                 height: 100%;
@@ -164,49 +166,46 @@
                 </vaadin-select>
             </vaadin-horizontal-layout>
         </vaadin-vertical-layout>
-    </template>
+                `;
+    }
 
-    <script>
-        class DataObjectView extends Polymer.Element {
-            static get is() {
-                return 'data-object-view';
-            }
+    ready() {
+        super.ready();
+        this.addEventListener("drop", this.drop.bind(this));
+        this.addEventListener("dragleave", this.dragLeave.bind(this));
+        this.addEventListener("dragover", this.dragOver.bind(this));
 
-            ready() {
-                super.ready();
-                this.addEventListener("drop", this.drop.bind(this));
-                this.addEventListener("dragleave", this.dragLeave.bind(this));
-                this.addEventListener("dragover", this.dragOver.bind(this));
+    }
 
-            }
+    drop(e) {
+        this.style.border = "";
+        // this.style.padding = "10px 15px";
+        this.$.content.style.padding = "10px 15px";
+    }
 
-            drop(e) {
-                this.style.border = "";
-                // this.style.padding = "10px 15px";
-                this.$.content.style.padding = "10px 15px";
-            }
+    dragLeave(e) {
+        // this.style.padding = "10px 15px";
+        this.style.border = "";
+        this.$.content.style.padding = "10px 15px";
+    }
 
-            dragLeave(e) {
-                // this.style.padding = "10px 15px";
-                this.style.border = "";
-                this.$.content.style.padding = "10px 15px";
-            }
+    dragOver(e) {
+        e.dataTransfer.dropEffect = "copy";
+        e.stopPropagation();
+        e.preventDefault();
+        this.style.border = "2px dashed red";
+        this.$.content.style.padding = "8px 13px";
+        // this.style.padding = "8px 13px";
+    }
 
-            dragOver(e) {
-                e.dataTransfer.dropEffect = "copy";
-                e.stopPropagation();
-                e.preventDefault();
-                this.style.border = "2px dashed red";
-                this.$.content.style.padding = "8px 13px";
-                // this.style.padding = "8px 13px";
-            }
+    static get properties() {
+        return {
+            // Declare your properties here.
+        };
+    }
 
-            static get properties() {
-                return {
-                    // Declare your properties here.
-                };
-            }
-        }
-        customElements.define(DataObjectView.is, DataObjectView);
-    </script>
-</dom-module>
+    static get is() {
+        return 'data-object-view';
+    }
+}
+customElements.define(DataObjectView.is, DataObjectView);

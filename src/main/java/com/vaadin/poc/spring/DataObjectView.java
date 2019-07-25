@@ -4,6 +4,7 @@ import com.vaadin.flow.component.*;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.contextmenu.ContextMenu;
 import com.vaadin.flow.component.dependency.HtmlImport;
+import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.html.Span;
@@ -24,8 +25,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Tag("data-object-view")
-@HtmlImport("frontend://src/data-object-view.html")
-@HtmlImport("styles/shared-styles.html")
+@JsModule("./src/data-object-view.js")
+@JsModule("./styles/shared-styles.js")
 public class DataObjectView extends PolymerTemplate<TemplateModel> {
 
     @Id("details")

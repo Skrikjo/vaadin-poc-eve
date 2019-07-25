@@ -6,6 +6,7 @@ import com.vaadin.flow.component.contextmenu.ContextMenu;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.dependency.HtmlImport;
+import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
@@ -27,8 +28,8 @@ import java.util.stream.Stream;
 
 @Route
 @Tag("main-view")
-@HtmlImport("frontend://src/main-view.html")
-@HtmlImport("styles/shared-styles.html")
+@JsModule("./src/main-view.js")
+@JsModule("./styles/shared-styles.js")
 public class MainView extends PolymerTemplate<TemplateModel> {
 
     @Id("vaadinButton")

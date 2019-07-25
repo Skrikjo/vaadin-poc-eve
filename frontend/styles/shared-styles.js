@@ -1,3 +1,7 @@
+import '@polymer/polymer/lib/elements/custom-style.js';
+const documentContainer = document.createElement('template');
+
+documentContainer.innerHTML = `
 <dom-module id="tree-grid-theme" theme-for="vaadin-grid-tree-toggle">
     <template>
         <style>
@@ -6,4 +10,6 @@
             }
         </style>
     </template>
-</dom-module>
+</dom-module>`;
+
+document.head.appendChild(documentContainer.content);
